@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premier Tax Services — DMV Tax Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #0a3d2e;
+    --green-mid: #0f6e56;
+    --green-bright: #1D9E75;
+    --green-light: #E1F5EE;
+    --gold: #c9922a;
+    --gold-light: #f5e6c8;
+    --white: #ffffff;
+    --off-white: #f9f7f4;
+    --text-dark: #1a1a1a;
+    --text-mid: #444;
+    --text-light: #777;
+    --border: #e0ddd7;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    background: var(--off-white);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--green-dark);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-phone {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--green-dark);
+    background-image: radial-gradient(ellipse at 80% 50%, #0f6e5622 0%, transparent 60%);
+    color: var(--white);
+    padding: 5rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+  .hero-text h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+    color: #b8d4cb;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+  .offer-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--green-dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+    margin-bottom: 1.5rem;
+  }
+  .trust-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #cde8df;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.25);
+  }
+  .form-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--green-dark);
+    margin-bottom: 0.25rem;
+  }
+  .form-card p {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background: var(--off-white);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--green-bright);
+    background: var(--white);
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--green-mid);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .submit-btn:hover { background: var(--green-dark); }
+  .form-note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    margin-top: 0.75rem;
+  }
+
+  /* SUCCESS */
+  .success-box {
+    display: none;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .success-box .check {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  .success-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--green-dark);
+    margin-bottom: 0.5rem;
+  }
+  .success-box p { color: var(--text-mid); font-size: 0.95rem; }
+  .success-box a { color: var(--green-mid); font-weight: 600; }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--green-bright);
+    padding: 1.25rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    gap: 1rem;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    color: #c8eae0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* EA HIGHLIGHT */
+  .ea-section {
+    background: var(--gold-light);
+    border-left: 5px solid var(--gold);
+    margin: 3rem auto;
+    max-width: 1100px;
+    border-radius: 0 10px 10px 0;
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .ea-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .ea-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--green-dark);
+    margin-bottom: 0.5rem;
+  }
+  .ea-section p {
+    color: #5a4a1a;
+    font-size: 0.97rem;
+    line-height: 1.7;
+  }
+
+  /* SECTION */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--green-bright);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--green-dark);
+    margin-bottom: 2.5rem;
+    line-height: 1.25;
+  }
+
+  /* SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover {
+    border-color: var(--green-bright);
+    box-shadow: 0 4px 16px rgba(29,158,117,0.1);
+  }
+  .service-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .service-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 0.5rem;
+  }
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* WHY US */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+  .why-card {
+    background: var(--green-dark);
+    border-radius: 10px;
+    padding: 1.5rem;
+    color: var(--white);
+  }
+  .why-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--gold);
+  }
+  .why-card p {
+    font-size: 0.88rem;
+    color: #9dc5b8;
+    line-height: 1.6;
+  }
+
+  /* CTA STRIP */
+  .cta-strip {
+    background: var(--green-dark);
+    padding: 3.5rem 2rem;
+    text-align: center;
+  }
+  .cta-strip h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+  .cta-strip p {
+    color: #9dc5b8;
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--green-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.9rem 2.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.9; }
+
+  /* FOOTER */
+  footer {
+    background: #06231a;
+    color: #6a9e8e;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 3rem 1.25rem 2rem;
+      gap: 2rem;
+    }
+    .stats-bar { grid-template-columns: 1fr; gap: 0.75rem; }
+    .ea-section { grid-template-columns: 1fr; }
+    nav { padding: 0.85rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Premier <span>Tax</span> Services</div>
+  <a class="nav-phone" href="tel:5713077503">📞 (571) 307-7503</a>
+</nav>
+
+<!-- HERO -->
+<div style="background: var(--green-dark);">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="offer-badge">🎉 $50 Off Your First Tax Return</div>
+      <h1>Get Your Taxes Done <em>Right</em> — Free Consultation</h1>
+      <p>Serving DC, Maryland & Virginia with expert, EA-reviewed tax preparation for individuals, freelancers, small businesses, and landlords.</p>
+      <div class="trust-pills">
+        <span class="pill">✓ EA on Staff</span>
+        <span class="pill">✓ 10+ Years Experience</span>
+        <span class="pill">✓ DMV's Trusted Tax Pros</span>
+        <span class="pill">✓ Remote-Friendly</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div id="formContent">
+        <h2>Schedule Your Free Consultation</h2>
+        <p>No obligation. We'll contact you within 24 hours.</p>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="name" placeholder="John Smith">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="phone" placeholder="(202) 555-0000">
+        </div>
+        <div class="form-group">
+          <label>Tax Situation</label>
+          <select id="situation">
+            <option value="">Select your situation...</option>
+            <option>W2 Employee</option>
+            <option>Self-Employed / 1099</option>
+            <option>Small Business</option>
+            <option>Rental Property Owner</option>
+            <option>Multiple States</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button class="submit-btn" onclick="submitForm()">Get My Free Consultation →</button>
+        <p class="form-note">🔒 Your information is kept 100% confidential.</p>
+      </div>
+      <div class="success-box" id="successBox">
+        <div class="check">✅</div>
+        <h3>Thank You!</h3>
+        <p>We'll reach out within 24 hours.<br>Questions? Call us at <a href="tel:5713077503">(571) 307-7503</a><br>or email <a href="mailto:premiertaxdmv@gmail.com">premiertaxdmv@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div><span class="stat-num">500+</span><span class="stat-label">Returns Filed</span></div>
+  <div><span class="stat-num">10+</span><span class="stat-label">Years Experience</span></div>
+  <div><span class="stat-num">3</span><span class="stat-label">States Covered: DC · MD · VA</span></div>
+</div>
+
+<!-- EA HIGHLIGHT -->
+<div class="ea-section">
+  <div class="ea-icon">🏛️</div>
+  <div>
+    <h3>Every Return Reviewed by an Enrolled Agent Before Filing</h3>
+    <p>An Enrolled Agent (EA) is the highest credential awarded by the IRS — above CPAs for federal tax matters. Unlike seasonal preparers at big-box firms, our EA personally reviews every return to make sure you get every deduction you're entitled to and zero IRS surprises. You're not just getting a form filer — you're getting a federally licensed tax professional watching your back.</p>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section>
+  <p class="section-label">What We Handle</p>
+  <h2 class="section-title">Tax Services We Offer</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">👤</span>
+      <h3>Individual Returns</h3>
+      <p>W-2 employees, retirees, and individuals — we maximize your refund with every deduction you deserve.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏢</span>
+      <h3>Small Business</h3>
+      <p>LLCs, S-Corps, partnerships, and sole proprietorships — tax filing tailored to your business structure.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💻</span>
+      <h3>Self-Employed / 1099</h3>
+      <p>Freelancers, gig workers, contractors — we navigate estimated taxes and every deductible expense.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏠</span>
+      <h3>Rental Property Owners</h3>
+      <p>Depreciation, repairs, passive losses — maximize your real estate tax benefits the right way.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section style="background: var(--off-white); padding-top: 0;">
+  <p class="section-label">Why Premier Tax</p>
+  <h2 class="section-title">We're Not Your Average Tax Preparer</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <h3>EA-Reviewed Every Time</h3>
+      <p>Your return is reviewed by a federally licensed Enrolled Agent before it ever reaches the IRS.</p>
+    </div>
+    <div class="why-card">
+      <h3>100% Remote-Friendly</h3>
+      <p>Upload your documents securely from home. No office visit required — we serve all of DMV remotely.</p>
+    </div>
+    <div class="why-card">
+      <h3>DMV Local Experts</h3>
+      <p>We know DC, Maryland, and Virginia tax laws inside and out — including local nuances that matter.</p>
+    </div>
+    <div class="why-card">
+      <h3>$50 Off First Return</h3>
+      <p>New clients save $50 on their first return. No gimmicks — just straightforward savings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>Ready to Stop Stressing About Taxes?</h2>
+  <p>Book your free consultation today. We'll handle everything.</p>
+  <a class="cta-btn" href="#formContent" onclick="document.getElementById('name').focus()">Claim My Free Consultation →</a>
+  <p style="color: #6a9e8e; margin-top: 1rem; font-size: 0.9rem;">Or call us directly: <a href="tel:5713077503" style="color: var(--gold); font-weight: 600;">(571) 307-7503</a> · <a href="mailto:premiertaxdmv@gmail.com" style="color: var(--gold); font-weight: 600;">premiertaxdmv@gmail.com</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Premier Tax Services · Serving Washington DC, Maryland & Virginia · <a href="tel:5713077503">(571) 307-7503</a> · <a href="mailto:premiertaxdmv@gmail.com">premiertaxdmv@gmail.com</a></p>
+</footer>
+
+<script>
+function submitForm() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const situation = document.getElementById('situation').value;
+  if (!name || !email || !phone || !situation) {
+    alert('Please fill in all fields before submitting.');
+    return;
+  }
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('successBox').style.display = 'block';
+}
+</script>
+</body>
+</html>
