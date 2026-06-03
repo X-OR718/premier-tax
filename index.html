@@ -542,7 +542,7 @@
 </footer>
 
 <script>
-function submitForm() {
+async function submitForm() {
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const phone = document.getElementById('phone').value.trim();
@@ -551,8 +551,29 @@ function submitForm() {
     alert('Please fill in all fields before submitting.');
     return;
   }
-  document.getElementById('formContent').style.display = 'none';
-  document.getElementById('successBox').style.display = 'block';
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xojzagak', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, phone, situation,
+        _subject: 'New Lead: ' + name + ' — ' + situation })
+    });
+    if (res.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('successBox').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please call us at (571) 307-7503.');
+      btn.textContent = 'Get My Free Consultation →';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Something went wrong. Please call us at (571) 307-7503.');
+    btn.textContent = 'Get My Free Consultation →';
+    btn.disabled = false;
+  }
 }
 </script>
 </body>
